@@ -1,0 +1,89 @@
+.form-list-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+  }
+  
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .error-message {
+    color: red;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+  
+  .no-forms-message {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+  }
+  
+  .form-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .form-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 10px 15px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .form-list-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-details {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center; 
+  }
+  
+  .form-name {
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .form-date {
+    color: #888;
+    font-size: 0.9em;
+  }
+  
+  .form-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .action-icon {
+    width: 20px; 
+    height: 20px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .action-icon:hover {
+    transform: scale(1.1);
+  }
+
+  .loading-forms {
+    text-align: center;
+    color: #666;
+    font-style: italic;
+    margin-top: 120px;
+  }
+  
