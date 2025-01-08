@@ -98,7 +98,7 @@ const FormBuilder = ({ formData, toggleView }) => {
     );
   };
 
-  const saveForm = () => {
+  const saveForm = async () => {
     const token = localStorage.getItem("authToken");
     if (!formName.trim()) {
       setError("Please provide a name for the form.");
@@ -112,7 +112,7 @@ const FormBuilder = ({ formData, toggleView }) => {
     final.unshift({ FormName: formName, formId: Date.now() });
 
     if (editForm) {
-      API.put(`/form/edit/${formData.formId}`, final, {
+      await API.put(`/form/edit/${formData.formId}`, final, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -121,7 +121,7 @@ const FormBuilder = ({ formData, toggleView }) => {
         })
         .catch((e) => console.log(e));
     } else {
-      API.post("/form/create", final, {
+      await API.post("/form/create", final, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
