@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api", // Replace with your backend URL
+  baseURL: "https://formbuilder-backend-8hew.onrender.com/api", // Replace with your backend URL
 });
 
 // Intercept request to add Authorization header if token exists
