@@ -41,6 +41,17 @@
     display: block;
     cursor: pointer;
   }
+
+  .toggle-password{
+    left: 455px;
+    top: -32px;
+    position: relative;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
   
   .save-button,
   .cancel-button {

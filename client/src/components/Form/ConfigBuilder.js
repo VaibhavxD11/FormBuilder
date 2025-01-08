@@ -8,19 +8,25 @@ const ConfigBuilder = ({ formConfig, onClose }) => {
   const [isTouched, setIsTouched] = useState({});
   const [error, setError] = useState("");
   const [isFormValid, setIsFormValid] = useState(false);
+  const [passwordVisibility, setPasswordVisibility] = useState({});
 
   useEffect(() => {
   
     const initialResponses = {};
     const initialTouched = {};
+    const initialVisibility = {};
 
     formConfig.fields.forEach((field) => {
       initialResponses[field.type] = "";
       initialTouched[field.type] = false;
+      if (field.type === "password") {
+        initialVisibility[field.type] = false;
+      }
     });
 
     setFormResponses(initialResponses);
     setIsTouched(initialTouched);
+    setPasswordVisibility(initialVisibility);
   }, [formConfig]);
 
 
@@ -115,6 +121,13 @@ const ConfigBuilder = ({ formConfig, onClose }) => {
     }
   };
 
+  const togglePasswordVisibility = (fieldType) => {
+    setPasswordVisibility((prev) => ({
+      ...prev,
+      [fieldType]: !prev[fieldType],
+    }));
+  };
+
   
   const handleCancel = () => {
     onClose();
@@ -130,7 +143,11 @@ const ConfigBuilder = ({ formConfig, onClose }) => {
           <div key={field.id} className="form-field">
             <label htmlFor={field.id}>{field.title}</label>
             <input
-              type={field.type}
+               type={
+                field.type === "password" && passwordVisibility[field.type]
+                  ? "text"
+                  : field.type
+              }
               id={field.id}
               placeholder={field.placeholder}
               value={formResponses[field.type] || ""}
@@ -139,6 +156,15 @@ const ConfigBuilder = ({ formConfig, onClose }) => {
               }
               className={isTouched[field.type] && formErrors[field.type] ? "error" : ""}
             />
+            {field.type === "password" && (
+                <button
+                  type="button"
+                  className="toggle-password"
+                  onClick={() => togglePasswordVisibility(field.type)}
+                >
+                  {passwordVisibility[field.type] ? <i class="fa-regular fa-eye-slash"></i> : <i class="fa-regular fa-eye"></i>}
+                </button>
+              )}
             {isTouched[field.type] && formErrors[field.type] && (
               <span className="error-text">{formErrors[field.type]}</span>
             )}
