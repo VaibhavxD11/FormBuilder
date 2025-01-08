@@ -3,7 +3,6 @@ import "./FormList.css";
 import API from "../../utils/api";
 import editIcon from "../../assets/img/edit.png";
 import deleteIcon from "../../assets/img/delete.png";
-import { InfinitySpin } from 'react-loader-spinner';
 
 const FormList = ({ handleEditForm, handleViewForm }) => {
   const [forms, setForms] = useState([]);
@@ -51,13 +50,7 @@ const FormList = ({ handleEditForm, handleViewForm }) => {
       <h2>Your Forms</h2>
       {error && <p className="error-message">{error}</p>}
       {loader ? (<div className="loading-forms">
-        <p>Loading your forms</p>
-        <InfinitySpin
-          visible={true}
-          width="200"
-          color="#4fa94d"
-          ariaLabel="infinity-spin-loading"
-          />
+        <p>Loading your forms...</p>
         </div>) :
       forms.length === 0 ? (
         <p className="no-forms-message">No forms found.</p>
