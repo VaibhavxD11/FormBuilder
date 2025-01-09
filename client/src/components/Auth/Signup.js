@@ -15,6 +15,7 @@ const Register = ({ onToggleForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
             if (!email || !emailPattern.test(email)) {
                 setError("Please enter a valid email address.");
                 return;
