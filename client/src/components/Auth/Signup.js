@@ -15,6 +15,10 @@ const Register = ({ onToggleForm }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            if (!email || !emailPattern.test(email)) {
+                setError("Please enter a valid email address.");
+                return;
+            }
             await API.post('/users/signup', { email, password });
             window.location.href = '/';
         } catch (err) {
