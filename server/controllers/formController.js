@@ -55,7 +55,7 @@ const getFormsByUser = async (req, res) => {
 
     const forms = await Form.find({ createdBy });
     if (forms.length === 0) {
-      return res.status(201).json({ message: "No forms found for this user." , forms});
+      return res.status(201).json(forms);
     }
 
     return res.status(200).json(forms);
