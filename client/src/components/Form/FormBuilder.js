@@ -59,6 +59,7 @@ const FormBuilder = ({ formData, toggleView }) => {
 
   const deleteField = (id) => {
     setFields((prevFields) => prevFields.filter((field) => field.id !== id));
+    checkFormValidity(fields);
   };
 
   const confirmField = (id) => {
