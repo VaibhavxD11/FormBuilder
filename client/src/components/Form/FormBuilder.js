@@ -146,7 +146,7 @@ const FormBuilder = ({ formData, toggleView }) => {
         <input
           type="text"
           value={formName}
-          onChange={(e) => setFormName(e.target.value)}
+          onChange={(e) => {setFormName(e.target.value); checkFormValidity(fields)}}
           placeholder="Enter Form Name"
           className="form-name-input"
         />
